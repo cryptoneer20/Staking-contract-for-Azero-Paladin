@@ -1,0 +1,576 @@
+{
+  "source": {
+    "hash": "0x6214dfc333fabcd76ebe20f3c4a924a90cd9a63343cdb09522cd0772f4e4e8cd",
+    "language": "ink! 3.4.0",
+    "compiler": "rustc 1.69.0-nightly"
+  },
+  "contract": {
+    "name": "staking",
+    "version": "0.1.0",
+    "authors": [
+      "Blockchain Master <blockchainmaster2021@gmail.com>"
+    ]
+  },
+  "V3": {
+    "spec": {
+      "constructors": [
+        {
+          "args": [
+            {
+              "label": "staking_token",
+              "type": {
+                "displayName": [
+                  "AccountId"
+                ],
+                "type": 0
+              }
+            },
+            {
+              "label": "apy",
+              "type": {
+                "displayName": [
+                  "u32"
+                ],
+                "type": 3
+              }
+            }
+          ],
+          "docs": [],
+          "label": "new",
+          "payable": false,
+          "selector": "0x9bae9d5e"
+        }
+      ],
+      "docs": [],
+      "events": [
+        {
+          "args": [
+            {
+              "docs": [],
+              "indexed": true,
+              "label": "staker",
+              "type": {
+                "displayName": [
+                  "AccountId"
+                ],
+                "type": 0
+              }
+            },
+            {
+              "docs": [],
+              "indexed": false,
+              "label": "amount",
+              "type": {
+                "displayName": [
+                  "Balance"
+                ],
+                "type": 4
+              }
+            }
+          ],
+          "docs": [],
+          "label": "StakeToken"
+        },
+        {
+          "args": [
+            {
+              "docs": [],
+              "indexed": true,
+              "label": "staker",
+              "type": {
+                "displayName": [
+                  "AccountId"
+                ],
+                "type": 0
+              }
+            },
+            {
+              "docs": [],
+              "indexed": false,
+              "label": "amount",
+              "type": {
+                "displayName": [
+                  "Balance"
+                ],
+                "type": 4
+              }
+            }
+          ],
+          "docs": [],
+          "label": "UnstakeToken"
+        },
+        {
+          "args": [
+            {
+              "docs": [],
+              "indexed": true,
+              "label": "staker",
+              "type": {
+                "displayName": [
+                  "AccountId"
+                ],
+                "type": 0
+              }
+            },
+            {
+              "docs": [],
+              "indexed": false,
+              "label": "amount",
+              "type": {
+                "displayName": [
+                  "Balance"
+                ],
+                "type": 4
+              }
+            }
+          ],
+          "docs": [],
+          "label": "ClaimRewards"
+        }
+      ],
+      "messages": [
+        {
+          "args": [
+            {
+              "label": "staker",
+              "type": {
+                "displayName": [
+                  "AccountId"
+                ],
+                "type": 0
+              }
+            }
+          ],
+          "docs": [],
+          "label": "staker_data_of",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Staker"
+            ],
+            "type": 6
+          },
+          "selector": "0xbefa5347"
+        },
+        {
+          "args": [],
+          "docs": [],
+          "label": "apy",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "u32"
+            ],
+            "type": 3
+          },
+          "selector": "0x51564730"
+        },
+        {
+          "args": [
+            {
+              "label": "staker",
+              "type": {
+                "displayName": [
+                  "AccountId"
+                ],
+                "type": 0
+              }
+            }
+          ],
+          "docs": [],
+          "label": "token_amount",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Balance"
+            ],
+            "type": 4
+          },
+          "selector": "0x2bbd98ad"
+        },
+        {
+          "args": [],
+          "docs": [],
+          "label": "total_stake_amount",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Balance"
+            ],
+            "type": 4
+          },
+          "selector": "0x0ffc0185"
+        },
+        {
+          "args": [],
+          "docs": [],
+          "label": "total_reward_amount",
+          "mutates": false,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Balance"
+            ],
+            "type": 4
+          },
+          "selector": "0xf44a11cb"
+        },
+        {
+          "args": [
+            {
+              "label": "amount",
+              "type": {
+                "displayName": [
+                  "Balance"
+                ],
+                "type": 4
+              }
+            }
+          ],
+          "docs": [],
+          "label": "stake_token",
+          "mutates": true,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Result"
+            ],
+            "type": 9
+          },
+          "selector": "0x649a3167"
+        },
+        {
+          "args": [
+            {
+              "label": "amount",
+              "type": {
+                "displayName": [
+                  "Balance"
+                ],
+                "type": 4
+              }
+            }
+          ],
+          "docs": [],
+          "label": "unstake_token",
+          "mutates": true,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Result"
+            ],
+            "type": 9
+          },
+          "selector": "0x40dbd036"
+        },
+        {
+          "args": [],
+          "docs": [],
+          "label": "claim_rewards",
+          "mutates": true,
+          "payable": false,
+          "returnType": {
+            "displayName": [
+              "Result"
+            ],
+            "type": 9
+          },
+          "selector": "0x8027650c"
+        }
+      ]
+    },
+    "storage": {
+      "struct": {
+        "fields": [
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "ty": 0
+              }
+            },
+            "name": "staking_token"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0100000000000000000000000000000000000000000000000000000000000000",
+                "ty": 3
+              }
+            },
+            "name": "apy"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0200000000000000000000000000000000000000000000000000000000000000",
+                "ty": 4
+              }
+            },
+            "name": "total_reward_amount"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0300000000000000000000000000000000000000000000000000000000000000",
+                "ty": 4
+              }
+            },
+            "name": "total_stake_amount"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0400000000000000000000000000000000000000000000000000000000000000",
+                "ty": 5
+              }
+            },
+            "name": "staker_data"
+          },
+          {
+            "layout": {
+              "cell": {
+                "key": "0x0500000000000000000000000000000000000000000000000000000000000000",
+                "ty": 7
+              }
+            },
+            "name": "interval"
+          }
+        ]
+      }
+    },
+    "types": [
+      {
+        "id": 0,
+        "type": {
+          "def": {
+            "composite": {
+              "fields": [
+                {
+                  "type": 1,
+                  "typeName": "[u8; 32]"
+                }
+              ]
+            }
+          },
+          "path": [
+            "ink_env",
+            "types",
+            "AccountId"
+          ]
+        }
+      },
+      {
+        "id": 1,
+        "type": {
+          "def": {
+            "array": {
+              "len": 32,
+              "type": 2
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "type": {
+          "def": {
+            "primitive": "u8"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "type": {
+          "def": {
+            "primitive": "u32"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "type": {
+          "def": {
+            "primitive": "u128"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "type": {
+          "def": {
+            "composite": {
+              "fields": [
+                {
+                  "name": "offset_key",
+                  "type": 8,
+                  "typeName": "Key"
+                }
+              ]
+            }
+          },
+          "params": [
+            {
+              "name": "K",
+              "type": 0
+            },
+            {
+              "name": "V",
+              "type": 6
+            }
+          ],
+          "path": [
+            "ink_storage",
+            "lazy",
+            "mapping",
+            "Mapping"
+          ]
+        }
+      },
+      {
+        "id": 6,
+        "type": {
+          "def": {
+            "composite": {
+              "fields": [
+                {
+                  "name": "stake_amount",
+                  "type": 4,
+                  "typeName": "Balance"
+                },
+                {
+                  "name": "reward_amount",
+                  "type": 4,
+                  "typeName": "Balance"
+                },
+                {
+                  "name": "last_time",
+                  "type": 7,
+                  "typeName": "Timestamp"
+                }
+              ]
+            }
+          },
+          "path": [
+            "staking",
+            "staking",
+            "Staker"
+          ]
+        }
+      },
+      {
+        "id": 7,
+        "type": {
+          "def": {
+            "primitive": "u64"
+          }
+        }
+      },
+      {
+        "id": 8,
+        "type": {
+          "def": {
+            "composite": {
+              "fields": [
+                {
+                  "type": 1,
+                  "typeName": "[u8; 32]"
+                }
+              ]
+            }
+          },
+          "path": [
+            "ink_primitives",
+            "Key"
+          ]
+        }
+      },
+      {
+        "id": 9,
+        "type": {
+          "def": {
+            "variant": {
+              "variants": [
+                {
+                  "fields": [
+                    {
+                      "type": 10
+                    }
+                  ],
+                  "index": 0,
+                  "name": "Ok"
+                },
+                {
+                  "fields": [
+                    {
+                      "type": 11
+                    }
+                  ],
+                  "index": 1,
+                  "name": "Err"
+                }
+              ]
+            }
+          },
+          "params": [
+            {
+              "name": "T",
+              "type": 10
+            },
+            {
+              "name": "E",
+              "type": 11
+            }
+          ],
+          "path": [
+            "Result"
+          ]
+        }
+      },
+      {
+        "id": 10,
+        "type": {
+          "def": {
+            "tuple": []
+          }
+        }
+      },
+      {
+        "id": 11,
+        "type": {
+          "def": {
+            "variant": {
+              "variants": [
+                {
+                  "index": 0,
+                  "name": "InsufficientTokenBalance"
+                },
+                {
+                  "index": 1,
+                  "name": "InsufficientStakedBalance"
+                },
+                {
+                  "index": 2,
+                  "name": "InsufficientPoolTokenBalance"
+                },
+                {
+                  "index": 3,
+                  "name": "TokenTransferError"
+                }
+              ]
+            }
+          },
+          "path": [
+            "staking",
+            "staking",
+            "Error"
+          ]
+        }
+      }
+    ]
+  }
+}
